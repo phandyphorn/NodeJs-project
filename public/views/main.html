@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- link to font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>QUIZ_APP_G08</title>
+</head>
+
+
+<body>
+    <!-- navigation bar -->
+    <header>
+        <nav>
+            <a href="main.html">
+                <img src="../images/quiz.png" alt="">
+            </a>
+            <div class="logo">
+                <p>QUIZ_APP_G08</p>
+            </div>
+            <div class="btn_view_play">
+                <button class="btn_nav_play" style="display: none">
+                PLAY
+                </button>
+                <button class="btn_nav_view">
+                    VIEW
+                </button>
+
+                <button type="button" class="btn_nav_logout" onclick="window.location.href='../index.html'">LOGOUT</button>
+
+                <button class="btn_add" id="add_question" data-toggle="modal" data-target="#myModal" style="display:none">
+                CREATE
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- display_list_of_question -->
+    <div class="container2">
+
+    </div>
+
+    <!-- home page -->
+    <div class="home_page">
+        <div class="heading-3">
+            <h1>QUIZ APP</h1>
+            <div class="paragraph">
+                <p>
+                    Do you want to test your knowledge?
+                </p>
+                <p>Have you ever learn grammar before?</p>
+                <p>If you ever learn it. let do this quiz now!!</p>
+                <p>If you want to create your ouw quiz. let click on add!</p>
+            </div>
+        </div>
+        <div class="btn_add_play">
+            <button class="btn_add" id="add_question" data-toggle="modal" data-target="#myModal">
+              <!-- <a href="views/add_question.html">ADD</a>   -->
+                CREATE
+            </button>
+            <button class="btn_play" id="play_quiz">    
+               PLAY
+            </button>
+        </div>
+    </div>
+    <!-- input question form -->
+    <div class="container_question">
+        <div class="main_container" id="main_container">
+            <div class="container1">
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Create question</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input_question">
+                                            <input type="text" id="input_question" placeholder='QUESTION'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="answer">
+                                            <input class="radio" type='radio' name="input" id="1"></input>
+                                            <input class="input" type='text' placeholder='Answer'></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="answer">
+                                            <input class="radio" type='radio' name="input" id="2"></input>
+                                            <input class="input" type='text' placeholder='Answer'></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="answer">
+                                            <input class="radio" type='radio' name="input" id="3"></input>
+                                            <input class="input" type='text' placeholder='Answer'></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="answer">
+                                            <input class="radio" type='radio' name="input" id="4"></input>
+                                            <input class="input" type='text' placeholder='Answer'></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="score">
+                                            <!-- <label for="score">Score</label> -->
+                                            <input type="number" id="score_input" name="score" min="5" max="50" placeholder="Score" value="">
+
+                                        </div>
+                                    </div>
+                                    <div class="btn_add_play">
+                                        <button class="btn_cancel" id="btn_cancel">
+                                                CANCEL
+                                        </button>
+                                        <button class="btn_add" id="add_questions" data-dismiss="modal" data-target="#myModal">
+                                                ADD
+                                            </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- play quiz -->
+    <div class="container3">
+        <div id="play_view">
+            <div id="start">Start Quiz!</div>
+            <div id="quiz" style="display: none">
+                <div id="question">MY QUESTION</div>
+
+            </div>
+
+            <div id="score_display" style="display: none">
+                <p id="score_p"></p>
+                <button class="show_good_answers">
+                    VIEW ANSWER
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- view list of questions -->
+    <div class="view_list_question">
+        <button class="btn_nav_play" style="display: none">
+                PLAY
+        </button>
+    </div>
+    <!-- <!show good and bad answer -->
+    <div class="container_4">
+        <div class="main_container_4">
+
+            <div class="incorrect_answer">
+                <h4> Incorrect</h4>
+            </div>
+            <div class="correct_answer">
+                <h4> Correct</h4>
+            </div>
+        </div>
+    </div>
+    <!-- link to js -->
+    <script src="../js/main.js" type="module" defer></script>
+</body>
+
+</html>
